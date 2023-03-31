@@ -1,0 +1,36 @@
+{
+  "name": "episode-03-namaste-react",
+  "version": "1.0.0",
+  "description": "Namaste react by Akshay Saini",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtulSinghAtul/Namaste-React-Web-Series.git"
+  },
+  "keywords": [
+    "react",
+    "atul",
+    "akshay"
+  ],
+  "author": "Atul Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AtulSinghAtul/Namaste-React-Web-Series/issues"
+  },
+  "homepage": "https://github.com/AtulSinghAtul/Namaste-React-Web-Series#readme",
+  "devDependencies": {
+    "parcel": "^2.8.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
