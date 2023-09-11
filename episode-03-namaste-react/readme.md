@@ -1,3 +1,63 @@
+# Episode - 03
+
+Instead of using `npx parcel index.html`, first go to package.json and change the scripts object property to using normal start script.
+
+```
+"scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  }
+```
+
+So now we can use `start script`,
+
+```
+npm run start
+or
+npm start
+```
+
+## What is JSX?
+
+JSX is a javascript syntax which is easier to create react element.
+
+**Note:** React is different and JSX is different. We can write react without JSX also but JSX make developer life easier to code.
+**Note:** JSX is HTML-like syntax or XML-like.
+**Note:** JSX is not HTML inside js.
+
+**Note:** JSX (transpiled-Parcel-Babel before it reaches the JS Engine). transpiled means this code converetd to the code that browser can understand and browser only understand EcmaScript.
+
+## How core react work?
+
+- React.createElement => ReactElement-Js Object => HTMLElement(render)
+
+## How JSX work?
+
+- JSX => Babel transpiles it to React.createElement => ReactElement-Js Object => HTMLElement(render)
+
+**Note:** In JSX we write attribute in camel case.
+
+```
+// React Element
+const heading = React.createElement("h1", { id: "heading" }, "Namaste React");
+```
+
+<!--! React Component -->
+
+- Class Based Component - OLD
+- Functional Component - NEW
+
+## Functional Component
+
+**Functional Component is just normal js function and
+it's just return react element / JSX.**
+
+## Component Composition
+
+Put one component function to inside another function called component composition.
+
+```
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -208,5 +268,31 @@ const Title = () => (
 );
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// //* Functional Rendering
+ //! Functional Rendering
 root.render(<Title />);
+```
+
+## Cross Site Scripting?
+
+- JSX me curly {} braces k andar ham jo bhi likhate hain
+  ye jsx usko senitize kar deta hai. man lo ham koi api se deta le kar aa rahe hain aur su data me virus hai to wo hamare broser ko control kar sakta hai, token ko access kar sakta hai, local storage aadi ko access kar sakta hai.
+
+  **Note:**
+
+  ```
+  const Title = ()=>( <h3 className="head" tabIndex="5">nesting react fragment - 01</h3>)
+
+   const HeadingComponent = ()=>(
+  <div id="container">
+  {Title()}
+  <Title/>
+  <Title><Title/>
+   <h3 className="head" tabIndex="5">nesting react
+       fragment - 01</h3>
+   </div> )
+  ```
+
+  {Title()}
+  <Title/>
+  <Title><Title/>
+  - these three are same.
