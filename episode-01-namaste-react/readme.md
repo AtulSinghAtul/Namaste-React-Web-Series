@@ -7,7 +7,7 @@
 ## Write react code using core react.
 
 ```
-    const heading = React.createElement("h1", {}, "Namaste react from core react")
+const heading = React.createElement("h1", {}, "Namaste react from core react")
 
 const root = RactDOM.createRoot(document.getElementById("root"))
 
