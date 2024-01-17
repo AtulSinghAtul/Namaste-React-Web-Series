@@ -45,6 +45,8 @@ npm install -D parcel
 
 > **If we have Package.json and Package-lock.json we recreates the node_modules so that's why not required node_modules to push on git.**
 
+- What ever you can regenerate don't put on git, git should have only essential things, if i can regenarate my nodemodules on server I don't want to put it up on github on git repositorey.
+
 ## What is npm?
 
 - npm is installing the package and manage that packages.
@@ -52,6 +54,12 @@ npm install -D parcel
 ## What is npx?
 
 - npx is executing the package.
+
+- When you want to start the server then follow this commond
+
+```
+npx parcel index.html
+```
 
 ## Parcel ?
 

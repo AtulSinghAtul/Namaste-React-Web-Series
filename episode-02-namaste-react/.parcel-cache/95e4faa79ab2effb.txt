@@ -60,7 +60,7 @@
 143C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\fs-search\fs-search.win32-x64-msvc.node133246370089106739 0
 110C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\yaml\schema.js133246370086384914 0
 142C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\caniuse-lite\data\features\web-app-manifest.js133246370103059987 0
-92C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\readme.md133387340392926428 0
+92C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\readme.md133499756861433294 0
 142C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\svgo\plugins\removeNonInheritableGroupAttrs.js133246370089353858 0
 103C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\is-json133246370079670178 1
 151C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@babel\highlight\node_modules\color-name\.eslintrc.json133246370080062940 0
