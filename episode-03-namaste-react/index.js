@@ -27,7 +27,7 @@ import ReactDOM from "react-dom/client";
 // console.log(heading);
 
 //* JSX Code
-//! JSX Code => React.createElement => ReactElement = JS Object => render into HTML element
+//! JSX Code converted into => React.createElement => ReactElement = JS Object => render into HTML element
 // const jsxHeading = <h1 id="jsxHeading">Namaste React Using JSX</h1>;
 
 // const boot = ReactDOM.createRoot(document.getElementById("boot"));
@@ -36,7 +36,7 @@ import ReactDOM from "react-dom/client";
 // console.log(jsxHeading);
 
 ////////////////////////////////////////////////////////
-// React Element
+//* React Element
 // const heading = <h1 className="heading">Namste React Using JSX</h1>;
 // const boot = ReactDOM.createRoot(document.getElementById("boot"));
 

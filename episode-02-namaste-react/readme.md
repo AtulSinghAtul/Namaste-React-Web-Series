@@ -61,29 +61,37 @@ npm install -D parcel
 npx parcel index.html
 ```
 
-## Parcel ?
+## Parcel will do ?
+
+> React not made our app fast , Only parcel make our app fast because parcel is doing everything for our app. Parcel uses many bundlers , many librareyes to make our app fast.
+
+**Real life example**
+PM is react and our Home minister is parcel and inside node modules lot of bundlers is our cabinate and other ministers.
 
 - Dev Build
 - Local Server
 - HMR = Hot Module Replacement
-- File Watching algorithm - written in c++
-- Cashing - Faster Builds
+- Parcel uses File Watching algorithm - written in c++
+- Parcel is Cashing for you - Faster Builds- when save
+  file the parcel built time reduced
 - Image Optimization
-- Minification
-- Bundling
-- Compress
+- Minification files
+- Bundling files
+- Compress files
 - Consistent Hashing
 - Code Splitting
 - Differential Bundling - support older browsers
 - Diagnostic
 - Error Handling
 - HTTPs
-- Tree Shaking - remove unused code
+- Tree Shaking - remove unused code - suppose some xtra code random whose not used then parcel remove unused code
 - Different development and production bundles
 
 ```
 npx parcel build index.html
 ```
+
+When we do `npx parcel build index.html` , it bundled,it will minified and do all crazy things stuff and it will put all those code files inside `dist folder`, write now these dist folder minified file use in production phase.
 
 **Note:** delete `"main":"App.js"` from package.json because it's create problem when we use above commond.
 
@@ -91,7 +99,7 @@ npx parcel build index.html
 
 **Note:** And when we refreshing our chrome page or save file this `dist` folder using `.parcel-cache` to update page using that `HMR(Hot Module replacement)`
 
-**Note:** when we build production build it's build inside `dist` folder. inside this dist folder we got only three file html, css and js file. every single code we got inside this folder.
+**Note:** when we build production build it's build inside `dist` folder. inside this dist folder we got only three file html, css and js file. every single code we got inside this folder and these three files are the production ready code for your app.
 
-**Note:** Those folder regenerate don't push on git.
+**Note:** Those folder regenerate don't push on git because I have sufficient information inside package.json and package-lock-json to regenate these file.
 ex. dist, .parcel-cache, node_modules

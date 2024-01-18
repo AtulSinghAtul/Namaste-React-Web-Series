@@ -1,4 +1,4 @@
-4360
+4354
 123C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\svgo\plugins\removeXMLNS.js133246370089972002 0
 126C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\node-addon-api\tools\README.md133246370084493989 0
 119C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\htmlnano\lib\helpers.js133246370081956969 0
@@ -53,14 +53,14 @@
 120C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\packager-svg\src133246370077184812 1
 116C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\resolve-from\license133246370076929825 0
 132C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\lmdb\dependencies\lz4\lib\lz4frame.h133246370092209417 0
-87C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist133387229131263463 1
+87C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist133500199252254989 1
 123C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\transformer-postcss133246370081524740 1
 119C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\escalade\dist\index.mjs133246370079640181 0
 133C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\source-map\lib\source-map-consumer.js133246370081946119 0
 143C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\fs-search\fs-search.win32-x64-msvc.node133246370089106739 0
 110C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\yaml\schema.js133246370086384914 0
 142C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\caniuse-lite\data\features\web-app-manifest.js133246370103059987 0
-92C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\readme.md133499756861433294 0
+92C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\readme.md133500202002728878 0
 142C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\svgo\plugins\removeNonInheritableGroupAttrs.js133246370089353858 0
 103C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\is-json133246370079670178 1
 151C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@babel\highlight\node_modules\color-name\.eslintrc.json133246370080062940 0
@@ -538,7 +538,6 @@
 103C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\timsort133246370080551508 1
 111C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\react\README.md133246414945992537 0
 114C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\nullthrows\LICENSE133246370076255617 0
-109C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.c36f364e.js.map133246426725107811 0
 128C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\svgo\plugins\sortDefsChildren.js133246370090178403 0
 114C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\dotenv\lib\main.js133246370080719812 0
 113C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\yaml\package.json133246370089313859 0
@@ -1393,7 +1392,6 @@
 115C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\semver\CHANGELOG.md133246370079870859 0
 108C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\mdn-data\css133246370085290937 1
 115C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\js-tokens\README.md133246370078776087 0
-105C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.c36f364e.js133246426725063808 0
 110C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\semver\LICENSE133246370075639921 0
 158C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\htmlnano\docs\versioned_docs\version-1.1.1\010-introduction.md133246370089223871 0
 115C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\semver\package.json133246370079149923 0
@@ -3613,7 +3611,6 @@
 123C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\runtime-browser-hmr133246370081044291 1
 126C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\runtime-service-worker133246370078113738 1
 114C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\source-map133246370091555575 1
-105C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.76e29b75.js133247077237054442 0
 120C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\transformer-html133246370080867482 1
 118C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\transformer-js133246370099464352 1
 124C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\@parcel\transformer-posthtml133246370079610183 1
@@ -4353,9 +4350,6 @@
 109C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\.bin\svgo.ps1133246370104183501 0
 107C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\.bin\terser133246370104196277 0
 111C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\node_modules\.bin\terser.ps1133246370104183501 0
-124C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\episode-02-namaste-react.3464ddca.js133246426724433740 0
-128C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\episode-02-namaste-react.3464ddca.js.map133246426724523829 0
-105C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.3d214d75.js133387229131133467 0
-109C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.3d214d75.js.map133387229131243455 0
-109C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.76e29b75.js.map133247077237125828 0
-98C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.html133387229130123450 0
+105C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.3d214d75.js133500199251677578 0
+109C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.3d214d75.js.map133500199252243476 0
+98C:\Users\anupa\OneDrive\Desktop\Namaste-React-Main-Folder\episode-02-namaste-react\dist\index.html133500199251667563 0
