@@ -1,13 +1,12 @@
-import { Header } from "./components/Header";
-import { Body } from "./components/Body";
+import Header from "./components/Header";
+import Body from "./components/Body";
 
 const App = function App() {
   return (
-    <>
+    <div>
       <Header />
       <Body />
-      <h1>Hello Moto</h1>
-    </>
+    </div>
   );
 };
 

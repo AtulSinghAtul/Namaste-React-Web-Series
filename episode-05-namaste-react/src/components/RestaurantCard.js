@@ -1,7 +1,40 @@
 import React from "react";
+import { CDN_URL } from "../utils/constant";
 
-const RestaurantCard = () => {
-  return <div>RestaurantCard</div>;
+const ResturantCard = (props) => {
+  const { resData } = props;
+
+  //! Inline CSS
+  const styleCard = {
+    backgroundColor: "#f4f0f1",
+    width: "200px",
+    height: "fit-content",
+    border: "2px solid black",
+  };
+  const resLogo = {
+    width: "100%",
+    height: "55%",
+  };
+
+  const {
+    name,
+    cloudinaryImageId,
+    avgRating,
+    cuisines,
+    costForTwo,
+    deliveryTime,
+  } = resData.data;
+
+  return (
+    <div className="res-card" style={styleCard}>
+      <img style={resLogo} src={CDN_URL + cloudinaryImageId} alt="res-logo" />
+      <h3>{name}</h3>
+      <h4>{cuisines}</h4>
+      <h4>{avgRating}</h4>
+      <h4>{deliveryTime}</h4>
+      <h4>{costForTwo / 100}</h4>
+    </div>
+  );
 };
 
-export default RestaurantCard;
+export default ResturantCard;
