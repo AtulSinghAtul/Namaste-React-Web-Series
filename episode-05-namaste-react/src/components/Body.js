@@ -49,7 +49,8 @@ const Body = () => {
   //   },
   // ]);
 
-  const [listOfRestaurent, setListOfRestaurent] = useState(restaurantList);
+  const arr = useState(restaurantList);
+  const [listOfRestaurent, setListOfRestaurent] = arr;
 
   // normal variable
   //let listOfRestaurent = [
