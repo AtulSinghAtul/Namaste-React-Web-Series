@@ -29,3 +29,5 @@
 
 - So what it will do now not directlly going to swiggy website you are going to cors proxy.io and enternally
   it is making and call to swiggy and getting you the data.
+
+  ## infinite scrolling in swiggy website?
