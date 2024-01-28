@@ -18,7 +18,7 @@ const Header = () => {
 
   //! Third use case of dependency array
   useEffect(() => {
-    console.log("use Effect render after header component render");
+    //console.log("use Effect render after header component render");
   }, [loginlogoutBtn]);
 
   return (

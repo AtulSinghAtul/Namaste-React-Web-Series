@@ -50,7 +50,7 @@ const appRoutes = createBrowserRouter([
     errorElement: <Error />,
   },
 ]);
-console.log(appRoutes);
+// console.log(appRoutes);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

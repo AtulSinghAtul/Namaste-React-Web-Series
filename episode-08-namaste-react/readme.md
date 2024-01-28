@@ -1,5 +1,44 @@
 # Episode-08 | Let's Get Classy
 
+![Alt text](ReactClassLifeCycle.png)
+
+> Reaserch about super() method and why we not write async in useEffect?
+
+> ## We Learned In this episode.
+
+- What is class base component
+- How we declare this class base component
+- why we use extends keyword and React.Component
+- Then we know about render() method
+- Then we know about constructor function
+- How can we catch props using constructor function
+- then we know about super() method which hold props
+- then we learn about state variable
+- and where we should write state variable
+- then learn how to update this state variable using
+  this.setState() method
+- learn about relationship between parent function
+  component and child class component
+- learn about parent and child class component
+  relationship
+- learned about child class life cycle method
+- learned about parent and child life cycle method, how
+  it works?
+- learned about life cycle method diagram
+- learned about Render phase and Commit phase
+- learned about mounting
+- learned about which first call, first constructor then
+  render then dom update then componentDidMount call
+- learned where we should make api call
+- learned about how updating phase work
+- learned when componentDidUpdate call
+- learned about Unmounting phase
+- learned componentWillUnmount
+- learned differnce between useEffect and
+  componentDidMount, componentDidUpdate and
+  componentWillUnmount
+- learned how can we do unmounting in useEffect
+
 ## In This episode we learn about class base component.
 
 - We will Make class base component to about component, We fetch tha data from github and show in our about component.
@@ -571,3 +610,211 @@ async componentDidMount(){
 9: componentDidUpdate
 */
 ```
+
+> First of mounting cycle happen and then update cycle happen. What about Unmounting cycle?
+
+> 3:- **componentWillUnmount()**
+
+- Mounting means shoeing on ui and Unmounting means removing from ui.
+- When we leave the about class page and go to another page **componentWillUnmount()** call. This is the how life cycle is work.
+
+### So here is the come Functional component because in class base component we did so much componentDidMount()
+
+### componentDidUpdate() and componentWillUnmount(), this is so confusing that's why Functional component is come into the picture.
+
+## We want to go more deep inside class base component, let's do.
+
+**Note:-** Never ever compare react class life cycle method to functional component.
+
+- more people compare to useEffect() from componentDidMount(){} , never ever compare both because useEffect is not work like that componentDidMount , useEffect is new way.
+
+- When our useEffect will call?
+- After every render my useEffect will call if we not write dependency array. Now things in class base component, After first render componentDidMount(){} will called and after every subsequent render it's updated, there is difference mount, update and unmount.
+
+```
+useEffect(()=>{
+ //useEffect will call on every render
+});
+```
+
+- If we write dependency array in useEffect and it will call only once in first render.
+
+```
+useEffect(()=>{
+//useEffect will call only once in first  render
+},[]);
+```
+
+- What will happen if we write count inside dependency array, every time my count changes that will call.
+
+```
+useEffect(()=>{
+//useEffect will call on every count changes
+},[count]);
+```
+
+- How will something I do in my class base component, now in class base component , we know that one life cycle method is called after every render, what that life cycle method, **that life cycle method is componentDidUpdate**, we know that componentDidUpdate will call after every update.
+
+- This pic is comparison to useEffect Update and componentDidUpdate. You can clearly see when we want updating in componentDidUpdate it very painful. So that is the reason we use useEffect and we use functional component.
+  ![Alt text](comparisonbetweenUseEffectAndcomponentDidUpdate.png)
+
+- Did you understand why write this array in useEffect?
+- Because you know earlier people write condition in if else inside componentDidUpdate , react developer said that ok let's make as an array we write in array multiple state variable.
+
+```
+useEffect(()=>{
+},[count, count2]);
+```
+
+```
+ componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.count !== prevState.count ||
+      this.state.count !== prevState.count
+    ) {
+      // code
+    }
+
+    console.log("Component Did Update Call");
+  }
+```
+
+- If we write another useEffect() whose dependency array take seprate count2 state variable, so how we will write in componetDidUpdate, in componetDidUpdate we will write two if else condition.And these if else condition not small these are 30, 40 line.
+
+```
+useEffect(()=>{
+},[count]);
+
+useEffect(()=>{
+},[count2]);
+```
+
+```
+ componentDidUpdate(prevProps, prevState) {
+    if(this.state.count !== prevState.count){
+      // code
+    }
+
+    if(this.state.count !== prevState.count2){
+      // code
+    }
+
+    console.log("Component Did Update Call");
+  }
+```
+
+## More Dive Deep
+
+### When will be use Component Will Unmount?
+
+- Component Will Unmount call when we are leaving the page,In react how many pages we have, It's a **Single Page Application** we are the just changing in component. When we go to home component to about component what is happening, it we are changing the page eventually the concept of the page we are changing but it is a single page itself **so there are lot of things to clear when we leaving the page**.
+- You know single page application have some cons in it.
+- Suppose we have setInterval in componentDidMount , it started printing namaste react op ahter 1 second.
+
+```
+ componentDidMount() {
+   setInterval(()=>{
+    console.log("Namaste React OP")
+   },1000)
+  }
+```
+
+- Now the issue in single page application is when to move in new page right in home page , it setInterval still calling, when we go another page the setInterval still calling without permission.
+
+- Because you are changing the pages it is not reloading your page it is just changing the component, it is just rendering, react is reconcilling, It is the power of Single Page Application(SPA) but it is bad things about SPA. This set time out hangging in the browser, This is the maturity of the senior developer, If we don't write console log inside setInterval, you will never know there are ten thousand set interval hagging on.
+- Senior developer will know ok every time I will load my component every time my component did mount will be called there is set interval that will triggred, the new set interval creating every time and it will stay, so this an important things you should know as senior developer.
+
+## How we will clear this set interval?
+
+- **We clear set interval in my componentWillUnmount**
+- but how will I refrence that set interval in our componentWillUnmount?
+- We use **this.timer** keyword before set interval.
+
+```
+componentDidMount() {
+this.timer = setInterval(()=>{
+console.log("Namaste React OP")
+},1000)
+}
+
+componentWillUnmount(){
+  clearInterval(this.timer);
+}
+
+```
+
+- And **this.timer** keyword shared with all the method with this class component.
+
+- Now when we refreshing my page it's start set interval first time and when we go another page componentWillUnmount triggred and stop this setInterval. This is the proper use case of **componentWillUnmount**.
+- When we again about page it's set interval again start and move another page this is stop , so we expecting of the exact behaviour.
+- When you are creating mess code, you clean your mess code also.
+
+## What if we write set Interval inside our useEffect()? What will happen?
+
+```
+useEffect(()=>{
+  setInterval(()=>{
+    console.log("Namaste React OP")
+  },1000)
+},[])
+```
+
+- This setInterval is also not stop inside useEffect, so there is something known as you can return a function from useEffect, this return function is basically called you are unmounting from this component and then this set interval is stop when you move on another page.
+
+```
+useEffect(()=>{
+  setInterval(()=>{
+    console.log("Namaste React OP")
+  },1000)
+
+  return ()=>{
+
+  }
+},[])
+```
+
+- This return function is called when you unmounting it.
+
+```
+
+const User = () => {
+
+  //! unmounting the page to stoped the set interval
+  useEffect(() => {
+
+       console.log("use effect called before return
+         function")
+ return () => {
+       console.log("useEffect called inside return
+        function")
+    };
+  }, []);
+
+console.log("render in first time")
+
+};
+```
+
+- **Means in functional component when you Unmount(means you go one page to another page so first you unmount the previous page) any things you write return function inside usEffect()**.
+- so how can you clear setInterval , using useEffect return function because this return function is unmounting every mess code which ever you want.
+
+```
+useEffect(()=>{
+ const timer = setInterval(()=>{
+    console.log("Set Interval from useEffect");
+  },1000)
+
+//! Unmounting the messed code
+  return ()=>{
+    clearInterval(timer);
+  }
+},[])
+```
+
+- If we go to about page setInterval is calling again and again and when move another contact or home page this setInterval is stopped because we using unmounting in useEffect. we use return function inside useEffect callback function which will do unmounting for us.
+
+# We understand class base component and life cycle method of class base component?
+
+**Note:-** learn useEffect, componentDidMount, componentDidUpdate and componentWillUnmount
+
+## When react is building they build all the life cycles things they realise if we continue doing this developer will stop writing react, that is why react came of the better way of doing it Functional component, Hooks and science then react picked up again.

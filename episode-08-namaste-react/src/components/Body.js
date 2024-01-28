@@ -11,11 +11,11 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   //* Whenever state variable update, react triggers a reconciliation cycle(re-render the component)
-  console.log("Body Rendered");
+  //console.log("Body Rendered");
 
   useEffect(() => {
     fetchData();
-    console.log("use effect called");
+    //console.log("use effect called");
   }, []);
 
   //console.log("body rendered");

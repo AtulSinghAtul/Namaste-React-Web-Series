@@ -19,6 +19,10 @@ class UserClass extends React.Component {
   }
 
   async componentDidMount() {
+    // this.timer = setInterval(() => {
+    //   console.log("NAMASTE REACT OP");
+    // }, 1000);
+
     //console.log(this.props.name + "Child Component Did Mount");
     const data = await fetch("https://api.github.com/users/AtulSinghAtul");
 
@@ -27,8 +31,20 @@ class UserClass extends React.Component {
     this.setState({ userInfo: json });
   }
 
-  componentDidUpdate() {
-    console.log("Component Did Update Call");
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.count !== prevState.count ||
+      this.state.count !== prevState.count
+    ) {
+      // code
+    }
+
+    //console.log("Component Did Update Call");
+  }
+
+  componentWillUnmount() {
+    //console.log("Component Will Unmount Call");
+    //clearInterval(this.timer);
   }
 
   render() {

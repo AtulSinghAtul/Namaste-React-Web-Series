@@ -1,29 +1,28 @@
 import { Component } from "react";
-// import User from "./User";
+import User from "./User";
 import UserClass from "./UserClass";
 
 //! Class base Component
 class About extends Component {
   constructor() {
     super();
-    console.log(" Parent Constructor");
+    //console.log(" Parent Constructor");
   }
 
   componentDidMount() {
-    console.log("Parent Component Did Mount");
-
+    //console.log("Parent Component Did Mount");
     //! componentDidMount is Best Place for API Call
   }
 
   render() {
     // const {}= this.state;
-    console.log(" Parent Render");
+    //console.log(" Parent Render");
     return (
       <>
         <h1>About Class Component</h1>
         <UserClass name={"First"} email={"alok4298@gmail.com"} />
-        {/* <UserClass name={"Second"} email={"alok4298@gmail.com"} />
-        <UserClass name={"Third"} email={"alok4298@gmail.com"} /> */}
+        {/* <UserClass name={"Third"} email={"alok4298@gmail.com"} /> */}
+        <User name={"Second"} email={"alok4298@gmail.com"} />
       </>
     );
   }
