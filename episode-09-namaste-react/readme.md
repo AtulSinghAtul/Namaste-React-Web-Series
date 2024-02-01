@@ -63,4 +63,60 @@ export default useRestaurantMenu;
 
 - so those event listner will keep a track of when the internet is online and when the internet is offline have super power that is given by window object and browsers.
 
-- So what ever write inside useEffect will be executed just once, so I will put my event listner on to web page once now those event listner job is to keep tracking when the iternet is online when the internet is offline.
+- So what ever write inside useEffect will be executed just once, so I will put my event listner on to web page once now those event listner job is to keep tracking when the iternet is online when the internet is offline and return the status back.
+
+## Chuncking / Code Splitting / Dynamic Bundling/ Lazy Loading / On Demand Loading
+
+- When we developing large application we have to break down our app in smaller JS files, not bundled only one JS File.
+
+- To break down your app into smaller logical chuncks.
+
+- We adding grocery component and want to this when we go on grocery page then only grocery code came in our app. Initally our code should not have grocery code when go that link then our grocery code should come up. **So that is known as lazy loading**
+
+- So we will not load everything directally but we will do lazy loading when required and this is also known as **on demand loading**.
+
+- Now we will not importing our grocery like this:
+
+```
+import Grocery from "./components/Grocery"
+```
+
+- We will importing Grocery using lazy() function, this lazy() function comes from react librarey and it takes callback function and this callback function uses import() function and now this import takes our Grocery path
+
+```
+const Grocery = lazy(()=> import("./components/Grocery))
+```
+
+- The Grocery has it's own bundled Grocery.js, our main buundled is seprate when we use this lazy() function.
+
+- As soon as we click on this Grocery it will takes some time fetch data to grocery at that particular time that middle state, react trying soon to render grocery but it is not there that state that causes that error. **How to handle that state - we will use Suspence**.
+
+- There is cool things react gives to us to handle that state, that is known as **Suspence**.
+- That Suspence is a component and it comes from react librarey.
+- When you are the home page your code of the grocery not there so react tries to load something, it can not load until the grocery code there so mean by intermediately react wants something to be prasent on that screen and you can give that inside **fallback inside suspence**. We can pass jsx inside fallback.
+
+```
+{
+        path: "/grocery",
+        element: <Suspence fallback={<h1>Loading...
+                 </h1>}><Grocery /></Suspence>,
+}
+```
+
+- When the use lazy loading all the code not comes that once and it will only comes when we that requested. If your component sizeing increasing your bundle size getting heavier 2mb now, suppose it's 10mb then we use start this type functionality.
+
+- I can also do this lazy loading about us, how can I do this lazy loading for about us,in same way.
+
+```
+const About = lazy(()=> import("./components/About))
+```
+
+```
+{
+        path: "/about",
+        element: <Suspence fallback={<h1>Loading...
+                 </h1>}><About /></Suspence>,
+}
+```
+
+- If go to my about us page so we have a different bundle for about us page, If we go to grocery, I will have different bundles for our grocery. So this is how I can distribute my applications into smaller smaller chunks and this will make our app very performend.
