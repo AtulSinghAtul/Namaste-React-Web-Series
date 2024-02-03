@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ResturantCard from "./RestaurantCard";
+import ResturantCard, { withDiscountLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import { RESTAURANTS_URL } from "../utils/constant";
@@ -42,6 +42,7 @@ const Body = () => {
     );
   };
 
+  //! checking user is online or offline
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false) {
@@ -49,6 +50,15 @@ const Body = () => {
       <h1>Looks like you're offline Please check your internet connection</h1>
     );
   }
+
+  // let data4 = filteredRestaurent.filter(
+  //   (discount) => discount.info.aggregatedDiscountInfoV3?.header
+  // );
+
+  // console.log(data4);
+
+  //! using Higher Order Function
+  const RestaurentCardDiscount = withDiscountLabel(ResturantCard);
 
   //! conditional rendering
   // if (listOfRestaurent.length == 0) {
@@ -60,7 +70,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="search flex justify-evenly items-center gap-12 h-8 bg-green-100 p-12">
+      <div className="search flex justify-evenly items-center gap-12 h-8 bg-green-50 p-12">
         <div className="flex justify-center items-center gap-6">
           <input
             type="text"
@@ -114,7 +124,14 @@ const Body = () => {
             key={restaurant?.info?.id}
             to={"/restaurants/" + restaurant?.info?.id}
           >
-            <ResturantCard resData={restaurant?.info} />
+            {}
+            {restaurant?.info?.aggregatedDiscountInfoV3?.header ===
+            restaurant?.info.aggregatedDiscountInfoV3?.header ? (
+              <RestaurentCardDiscount resData={restaurant?.info} />
+            ) : (
+              <ResturantCard resData={restaurant?.info} />
+            )}
+            {console.log(restaurant?.info.aggregatedDiscountInfoV3?.header)}
           </Link>
         ))}
       </div>

@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constant";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/UserContext";
 
 const Header = () => {
   // let loginBtn = "Login";
   const [loginlogoutBtn, setLoginlogoutBtn] = useState("Login");
+
+  const { userLoggedIn } = useContext(userContext);
 
   //! first use case of dependency array
   // useEffect(() => {
@@ -26,7 +29,7 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="flex flex-row items-center justify-between w-screen h-40 bg-green-300">
+    <div className="flex flex-row items-center justify-between w-screen h-40 bg-green-200">
       <div className="h-[100%]">
         <img src={LOGO_URL} alt="" className="h-[100%]" />
       </div>
@@ -84,6 +87,8 @@ const Header = () => {
       >
         {loginlogoutBtn}
       </button>
+
+      <span className="font-bold">{userLoggedIn}</span>
     </div>
   );
 };

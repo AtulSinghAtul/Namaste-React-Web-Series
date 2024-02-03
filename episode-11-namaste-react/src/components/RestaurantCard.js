@@ -38,3 +38,22 @@ const ResturantCard = (props) => {
 };
 
 export default ResturantCard;
+
+//! Higher Order Component
+
+export const withDiscountLabel = (ResturantCard) => {
+  return (props) => {
+    const { resData } = props;
+    console.log(props);
+    return (
+      <>
+        <div className="relative">
+          <label className="absolute top-[35%] left-[20%] text-white font-bold text-lg">
+            {resData?.aggregatedDiscountInfoV3?.header}
+          </label>
+          <ResturantCard {...props} />
+        </div>
+      </>
+    );
+  };
+};
