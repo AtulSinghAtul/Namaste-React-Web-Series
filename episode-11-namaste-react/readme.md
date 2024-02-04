@@ -151,7 +151,7 @@ const RestaurantCategorey = (props) => {
 
 - WE use Context which is kind of like a global place where our data Kept and anybody can access it, that is known as react context. So props drilling the problem and solution is context.
 
-## How can we use context?
+## How can we use context in class base component and functional component?
 
 - **Creating Context**
 
@@ -173,3 +173,115 @@ import contextData from "./utils/UserContext"
 
 const {loggedInUser} = useContext(contextData)
 ```
+
+> **In Class base component how extract context data**
+
+- In class base component About we can not use hooks for using context, so how can access that context data.
+
+- So how will use context, we can do something like **<UserContext.Consumer> </UserContext.Consumer>**, so basically when we create a context, so react gives us power **.Consumer** as well.
+
+- **So we have two ways to consume the Context-**
+
+- **1:-** > One way by using a hook with functional component.
+- **2:-** > Second way for class base component we have not hook so we use like `<UserContext.Consumer> </UserContext.Consumer>`, inside this we will have jsx which has a callback function and this callback access to the data, this data is context data.
+
+```
+<UserContext.Consumer>{(data)=>console.log(data)} </UserContext.Consumer>
+```
+
+## How Update Context Data?
+
+- Everywhere now our context value is _default user_ suppose I want to update it _Atul Singh_.
+
+- how do I pass this context new information in my app? - To pass this new information in my app, I will use context **.Provider** so just like we have **.Consumer**. We will wrap our whole app inside this `<UserContext.Provider> </UserContext.Provider>` and I can pass in whatever value I have pass In value userLoggedIn`<UserContext.Provider value=({userLoggedIn:userName})> </UserContext.Provider>`
+
+- I have my whole app wrap inside this **UserContext.Provider** that means anywhere inside my app we will not using old value , we will using new value anywhere inside my app.
+
+```
+import userContext from "./utils/UserContext";
+
+const AppLayout = function App() {
+
+  const [userName, setUserName] = useState();
+
+  //let's assume that We doing Authentication
+
+  useEffect(() => {
+    // make an api call and send userName and Password
+    const data = {
+      name: "Akshay Saini",
+    };
+
+    setUserName(data.name);
+  }, []);
+
+  return (
+    <userContext.Provider value={{ userLoggedIn: userName }}>
+      <div>
+        <Header />
+        <Outlet />
+      </div>
+    </userContext.Provider>
+  );
+};
+```
+
+- If only we wrapped Header by userContext.Provider so what will happen only in my header component. so this new value akshay saini only be present inside our header and all the places will be there the default value.
+
+```
+
+      <div>
+      <userContext.Provider value={{ userLoggedIn: userName }}>
+        <Header />
+      </userContext.Provider>
+        <Outlet />
+      </div>
+
+```
+
+- If we use our Provider specific portion I can do that to this is ther power of context and **Context is global space** we can provide to whole app or just small portion of our app, We create multiple context, we can create new context for header, we can new context somewhere else and we can override anywhere I want do.
+
+## Can we do nested Provider?
+
+- One is our whole app Provider and another Provider for the header and we can also send different value. This is perfectly valid code
+
+```
+// Came Default Value
+<userContext.Provider value={{ userLoggedIn: userName }}>
+// Akshay Saini
+      <div>
+      <userContext.Provider value={{ userLoggedIn: "Elon Musk" }}>
+// Elon Musk
+        <Header />
+      </userContext.Provider>
+        <Outlet />
+      </div>
+ </userContext.Provider>
+```
+
+## How will I update Context Live?
+
+- Whatever the data accessing akshay saini this is coming from Provider value, how can we update the value,
+  how will update my userName from body input box
+- We can update userName by setUserName how can call this setUserName that body component input box, because we can pass setUserName also inside value.
+
+```
+
+<userContext.Provider value={{ userLoggedIn: userName, setUserName }}>
+// Akshay Saini
+      <div>
+        <Header />
+        <Outlet />
+      </div>
+ </userContext.Provider>
+```
+
+```
+const {userLoggedIn,setUserName} = useContext(UserContext)
+
+<input value={userLoggedIn} onChange={(e)=>setUserName(e.target.value)}/>
+```
+
+- Where we use UserContext every where that userLoggedIn updated now.It is not just changing same page, it is also changing page about us.
+
+- Context is global space we are trying to update global space and when this global place when this about place load it's fetches from the global space and by that time the value of it sachin tendulkar , what we write in input box. so this the react context.

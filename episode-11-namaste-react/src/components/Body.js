@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import ResturantCard, { withDiscountLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { RESTAURANTS_URL } from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const arr = useState([]);
   const [listOfRestaurent, setListOfRestaurent] = arr;
   const [filteredRestaurent, setFilteredRestaurent] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const { userLoggedIn, setUserName } = useContext(UserContext);
 
   //* Whenever state variable update, react triggers a reconciliation cycle(re-render the component)
   console.log("Body Rendered");
@@ -114,8 +117,14 @@ const Body = () => {
             // console.log(listOfRestaurent);
           }}
         >
-          restaurent button
+          top rated restaurent
         </button>
+        {/* //! Updating live context data */}
+        User:{" "}
+        <input
+          value={userLoggedIn}
+          onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
 
       <div className="res-container flex flex-wrap justify-start items-start ml-7">
