@@ -3,12 +3,18 @@ import { LOGO_URL } from "../utils/constant";
 import { useContext, useEffect, useState } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import userContext from "../utils/UserContext";
+// import store from "../utils/addStore";
+import { useSelector } from "react-redux";
+
+// import cartSlice from "../utils/cartSlice";
 
 const Header = () => {
   // let loginBtn = "Login";
   const [loginlogoutBtn, setLoginlogoutBtn] = useState("Login");
 
   const { userLoggedIn } = useContext(userContext);
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   //! first use case of dependency array
   // useEffect(() => {
@@ -66,7 +72,7 @@ const Header = () => {
           to={"/cart"}
           className="hover:text-green-100 hover:bg-green-500  p-2 rounded-md"
         >
-          Cart
+          Cart({cartItems.length})
         </Link>
         <Link
           to={"/grocery"}

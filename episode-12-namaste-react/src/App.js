@@ -8,6 +8,10 @@ import Error from "./components/Error";
 import RestaurantsMenu from "./components/RestaurantsMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import userContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/addStore";
+import Cart from "./components/Cart";
+console.log(store);
 
 // import Grocery from "./components/Grocery";
 
@@ -31,23 +35,25 @@ const AppLayout = function App() {
   }, []);
 
   return (
-    //  Come Default Value
-    <userContext.Provider value={{ userLoggedIn: userName, setUserName }}>
-      {/* //! Akshay Saini */}
-      <div>
-        {/* <userContext.Provider value={{ userLoggedIn: "Elon Musk" }}> */}
-        {/* //! Elon Musk */}
-        <Header />
-        {/* </userContext.Provider> */}
-        <Outlet />
-        {/* if "/"  */}
-        {/* <Body /> */}
-        {/* if "/about"  */}
-        {/* <About /> */}
-        {/* if "/contact"  */}
-        {/* <Contact /> */}
-      </div>
-    </userContext.Provider>
+    <Provider store={store}>
+      {/* // Come Default Value */}
+      <userContext.Provider value={{ userLoggedIn: userName, setUserName }}>
+        {/* //! Akshay Saini */}
+        <div>
+          {/* <userContext.Provider value={{ userLoggedIn: "Elon Musk" }}> */}
+          {/* //! Elon Musk */}
+          <Header />
+          {/* </userContext.Provider> */}
+          <Outlet />
+          {/* if "/"  */}
+          {/* <Body /> */}
+          {/* if "/about"  */}
+          {/* <About /> */}
+          {/* if "/contact"  */}
+          {/* <Contact /> */}
+        </div>
+      </userContext.Provider>
+    </Provider>
   );
 };
 
@@ -79,6 +85,10 @@ const appRoutes = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

@@ -282,5 +282,235 @@ const dispatch = useDispatch()
 - This dispatch function dispatch our addItems reducer function whose we export from cartSlice.
 
 ```
+import {addItems} from "../utils/cartSlice";
+
+const handleAddItem = ()=>{
+ // dispatch(addItem(action))
+ // action = "Lassi"
+  dispatch(addItem("Lassi"))
+
+}
+```
+
+- What will I pass in inside dispatch method action ("Lassi") this will go to my reducers function addItems action
+  and that to inside **action.payload will be Lassi**.
 
 ```
+reducers:{
+  addItem:(state, action)=>{
+
+     state.items.push(action.payload);
+   //state.items.push("Lassi");
+   // action.payload = "Lassi"
+  }
+}
+```
+
+- Whenever we call this or dispatch this addItems() redux will create a object and it will create a payload inside this object and it dispatch will add action value "Lassi" indide this object
+
+```
+
+
+const handleAddItem = ()=>{
+ // dispatch(addItem(action))
+ // action = "Lassi"
+  dispatch(addItem("Lassi"))
+
+}
+
+             {
+  action =>      payload:"Lassi"
+             }
+```
+
+- And it will take this object ({payload:"Lassi" }) aand pass it second argument over reducers function addItems(state,action) and when will we do `action.paylod` you will get this "Lassi"(`action.paylod = "Lassi"`)
+
+- And when we click on add button it will add food on cart, when ever my store is modifying it changing things inside header , we have subscribe this store using useSelector().
+
+- When ever click this add button a **action is dispatch** which calls a reducer function , which update the slice of the store and becauese my header is subscribied to the store using a selector every thing working seamlessely fine. so this is how basically whole loop working behind the scene.
+  ![ReduxWholePath-img](./image/ReduxWholePath.png)
+
+# Difference between?
+
+```
+onClick(handleAddItem)
+onClick(()=>handleAddItem(item))
+onClick(handleAddItem(item))
+```
+
+These lines of code seem to be related to handling click events in a UI framework or library like React. Let's break them down:
+
+- 1. `onClick(handleAddItem)`: This line is likely passing a function reference (`handleAddItem`) to the `onClick` event handler. When the element associated with this onClick event is clicked, the `handleAddItem` function will be invoked.
+
+- 2. `onClick(() => handleAddItem(item))`: Here, an inline arrow function is created. When the element is clicked, this function will be executed, and within it, `handleAddItem(item)` will be called. This allows for passing additional arguments (`item`) to `handleAddItem`.
+
+- 3. `onClick(handleAddItem(item))`: This line is invalid in most cases, as it directly calls `handleAddItem(item)` when the component renders rather than waiting for the onClick event. It's more appropriate to use a function reference or an inline arrow function for onClick event handlers, as shown in the previous examples.
+
+So, the first two lines are valid ways to handle click events, with the second one allowing for passing additional arguments to the handler function. The third line is likely a mistake or misunderstanding, as it would immediately call the function when rendering the component, rather than waiting for a click event.
+
+## Interview question
+
+- **When ever you are doing useSelector() make sure you are subscribing to the right portion of the store**.
+
+```
+const cartItems = useSelector((store)=>store.cart.items);
+```
+
+- **If you don't subscribe the right portion of the store it will be a big performance loss**
+
+- Earlier we are subscribing the small portion of the store, **Now we are subscribing the whole store and extracting our items**.
+
+```
+const store = useSelector((store)=>store);
+
+const cartItems = store.cart.items;
+```
+
+- Suppose our store is very big so anything random changes in our store I want to this component to be affected by this, **I don't want to subscribe my whole store, it is foolish thing**.
+- **A better parformance way is to only subscribe to a specific portion of the store**.Alwayes subscribe to small portion of a store.
+
+```
+const cartItems = useSelector((store)=>store.cart.items);
+```
+
+- Why useSelector name is selector because the name is selector because you are selecting a portion of the store, that's why name is selector.
+
+## Another Interview question
+
+- When we are creating appStore so inside this appStore we use keyword is **reducer** because this is one big reducer of this appStore.
+
+```
+const appStore = configureStore({
+  reducer:{
+
+  }
+})
+```
+
+- and inside this one big reducer have **multiple reducers**
+
+```
+const appStore = configureStore({
+  reducer:{
+    cart: cartReducer
+  }
+})
+```
+
+- But when we **creating slice** we create **multiple small reducers functions** so that is why this is known as reducers.
+- And when we are exporting this only one reducer from cartSlice.
+
+## Interview question
+
+- When we write vanilla(older) redux reducers function **We can't mutate state directley**.
+- firstly we make copy of the state and then mutate state and return it. earlier returning was mandatorey.
+
+```
+
+  reducers:{
+    addItem: (state, action)=>{
+       const newState = [...state];
+       newState.items.push(action.payload);
+
+       return newState;
+    }
+  }
+
+```
+
+- In new Redux Toolkit we have to mutate the state. but now returning not mandatorey.
+
+```
+  reducers:{
+    addItem: (state, action)=>{
+      // redux toolkit uses immer bts
+       state.items.push(action.payload);
+    }
+  }
+```
+
+- inside behind this code redux using vanilla(older) concept and redux uses **immer librarey** to do this, So absically immer librarey kind of like finding difference between the original state and the mutated state and
+  then gives a new state which is immutable state a new copy of the state.
+
+![immer-img](./image/immerRedux.png)
+
+> **Explaning in other way -**
+
+```
+  reducers:{
+    removeItem: (state, action)=>{
+      // redux toolkit uses immer bts
+       state.items.length = 0
+    }
+  }
+```
+
+- removeItem state is a local variable and this state have value of that original state pass over here so actually have modified.
+
+-So if we do something like that
+
+```
+  reducers:{
+    removeItem: (state, action)=>{
+
+       state= []
+    }
+  }
+```
+
+it's change (`state= []`) only locally state variable , it will not modified the original state. because local state is a copy of original state so why this original state not modified.
+
+```
+  reducers:{
+    // original state = {items: ["pizza"]}
+    removeItem: (state, action)=>{
+       console.log(state)// ["pizza"]
+       state= []
+       console.log(state)// []
+    }
+  }
+```
+
+- If you will do normal consol log it will not show the state , When we will use current() method then it will show state.
+
+```
+  reducers:{
+
+    removeItem: (state, action)=>{
+       console.log(current(state))// ["pizza"]
+       state= []
+       console.log(state)// []
+    }
+  }
+```
+
+- RTK sayes either mutate the existing state or return a new state
+  **Mutating the State**
+
+```
+  reducers:{
+    removeItem: (state, action)=>{
+       state.items.length = 0; // original state = {items: ["pizza"]}
+    }
+  }
+```
+
+**Returning the new state** this new [] will be replaced inside originalstate = {items:[]}
+
+```
+  reducers:{
+    removeItem: (state, action)=>{
+      return {items:[]};
+    }
+  }
+```
+
+- So if you do **state.items.length = 0** it will modified this originalstate = {items:[]} or else you return a new state **return {items: []}**
+
+## install redux dev tools chrome extension
+
+- there are dozzens of slices in your app, there are so many components mutating the state from random places subscribing to it, it becomes very hard to see what's going on behind the scene and very hard to debug but using this redux dev tools we can do lot of things.
+
+## Home Work
+
+- learned about redux middleware, hunk and RTK query.

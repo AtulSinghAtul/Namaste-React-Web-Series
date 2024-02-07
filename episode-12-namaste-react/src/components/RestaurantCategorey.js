@@ -2,7 +2,7 @@ import AccordionItemsList from "./AccordionItems";
 
 const RestaurantCategorey = (props) => {
   const { data, showItems, setShowIndex, key } = props;
-  console.log(data);
+  // console.log(data);
 
   //! Lifting State Up using index and it's controlled component using props
   function handleClick() {
