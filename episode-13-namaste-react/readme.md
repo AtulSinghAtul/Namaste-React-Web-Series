@@ -51,7 +51,9 @@
   transpilation
 - Jest Configuration - npx jest --init
 - Install jsdom library
-- Install @babel/preset-react- to make jsx work in test cases
+- Install @babel/preset-react - to make jsx work in test cases
+- Include @babel/preset-react inside my babel.config.js
+- install this @testing-librarey/jest-dom
 
 > **1.** **Commond** for installing react testing librarey
 
@@ -185,3 +187,167 @@ test("Sum function should calculate the sum of two numbers", ()=>{
 ```
 
 so this is how you test your sum function.
+
+- **9.**
+
+```
+  @babel/preset-react inside my babel.config.js
+```
+
+- I will add this into my babel config
+
+```
+babel.config.js
+
+module.exports = {
+  presets: [
+    ["@babel/preset-env", { targets: { node: "current" } }],
+
+  ["@babel/preset-react",{runtime: "automatic"}]
+    ],
+
+};
+```
+
+- We install this package so now why we add this presets, what is the prsets, so basically what is babel- babel is transpiler it basically convert your code from one form to another, right now **this babel presets react is basically helping our testing librarey to convert jsx code to html so that it can read properly**.
+
+```
+test("", ()=>{
+  render(<Contact/>)
+
+  const heading = screen.getByRole("heading");
+
+  expect(heading).toBeInTheDocument();
+})
+```
+
+- basically this code ( render(<Contact/>)) is jsx so that babel preset helping this react code to be converted into normal html code, that's why we use presets.
+
+- **10.** When run our test case it's gives us error toBeInTheDocument is not a function. So basically I am trying to render my component on to **jsdom** and I am trying to find heading inside my rendered screen and once my heading now I am trying to search weather my heading inside the document or not and this sayes toBeInTheDocument is not a function, it is not present here because we have not installed librarey, there is one more librarey to take help from which is known as `@testing-librarey/jest-dom` , so we will install this librarey.
+- So we import the whole librarey `import "@testing-librarey/jest-dom";`
+- Once we include this library you will see amazing thing as soon as you write any Assertion, as soon as we write `expect(heading)` and hit the dot it gives you a lot of important function that you can assert you.
+
+```
+//Assertion
+expect(heading).toBeInTheDocument()
+```
+
+- We uses this function (toBeInTheDocument()) a lot, when ever we have to check something wheather it has loaded or not we use this `toBeInTheDocument()` function.
+- So now our test case will passed.
+
+<!-- ********************************************* -->
+
+- When we do console log this return our jsx element, that is react element, that is a object, that is react fiber node, that is virtual dom react all of things return to us.
+
+```
+test("Should load 2 input boxes on the Contact us component", () => {
+  render(<Contact />);
+// Querying
+  const inputBoxes = screen.getAllByRole("textBox");
+
+  console.log(inputBoxes.length);
+
+  // Assertion
+  //expect(inputBoxes.length).toBe(2);
+  expect(inputBoxes.length).not.toBe(3);
+});
+```
+
+- If we have multiple items that we use `getAllByRole`
+
+- A lot of Querying and Assertion function try to play with this function.
+
+- In every basic test cases We have `render`, `Querying `, `Assertion`, these are alwayes we doing.
+
+- **Note-** If you have multiple test cases then you do one more things you can group multiple test cases inside `describe()` function. And also you grouped inside described() to another described() function and grouped test cases.
+
+```
+describe("Contact Us Paper Test Cases", ()=>{
+
+test("Should load contact us component", () => {
+  render(<Contact />);
+
+  const heading = screen.getByRole("heading");
+
+  // Assertion
+  expect(heading).toBeInTheDocument();
+});
+
+test("Should load button inside contact us component", () => {
+  render(<Contact />);
+
+  const button = screen.getByRole("button");
+
+  // Assertion
+  expect(button).toBeInTheDocument();
+});
+
+test("Should load name inside contact us component", () => {
+  render(<Contact />);
+
+  const inputName = screen.getByPlaceholderText("name");
+
+  // Assertion
+  expect(inputName).toBeInTheDocument();
+});
+
+test("Should load 2 input boxes on the Contact us component", () => {
+  render(<Contact />);
+  // Querying
+  const inputBoxes = screen.getAllByRole("textbox");
+
+  console.log(inputBoxes.length);
+
+  // Assertion
+  expect(inputBoxes.length).toBe(2);
+});
+
+})
+```
+
+```
+describe("Contact Us Page Test Cases", ()=>{
+
+test("Should load contact us component", () => {
+  render(<Contact />);
+
+  const heading = screen.getByRole("heading");
+
+  // Assertion
+  expect(heading).toBeInTheDocument();
+});
+
+test("Should load button inside contact us component", () => {
+  render(<Contact />);
+
+  const button = screen.getByRole("button");
+
+  // Assertion
+  expect(button).toBeInTheDocument();
+});
+
+describe("input test cases",()=>{
+
+test("Should load name inside contact us component", () => {
+  render(<Contact />);
+
+  const inputName = screen.getByPlaceholderText("name");
+
+  // Assertion
+  expect(inputName).toBeInTheDocument();
+});
+
+test("Should load 2 input boxes on the Contact us component", () => {
+  render(<Contact />);
+  // Querying
+  const inputBoxes = screen.getAllByRole("textbox");
+
+  console.log(inputBoxes.length);
+
+  // Assertion
+  expect(inputBoxes.length).toBe(2);
+});
+})
+
+})
+```
