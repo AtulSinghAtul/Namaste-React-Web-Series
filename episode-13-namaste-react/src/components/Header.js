@@ -14,7 +14,7 @@ const Header = () => {
 
   const { userLoggedIn } = useContext(userContext);
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   //! first use case of dependency array
   // useEffect(() => {

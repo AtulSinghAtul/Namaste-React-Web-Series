@@ -7,6 +7,6 @@ const store = configureStore({
   },
 });
 
-console.log(cartReducer);
+// console.log(cartReducer);
 
 export default store;

@@ -1,0 +1,63 @@
+{
+  "id": "80524",
+  "name": "Chicago Pizza",
+  "cloudinaryImageId": "n5bn4o6b8o0pj2bbxlui",
+  "locality": "Sardar Patel Marg",
+  "areaName": "Civil Lines",
+  "costForTwo": "₹300 for two",
+  "cuisines": ["Pizzas"],
+  "avgRating": 3.9,
+  "parentId": "60277",
+  "avgRatingString": "3.9",
+  "totalRatingsString": "5K+",
+  "sla": {
+    "deliveryTime": 30,
+    "lastMileTravel": 2.7,
+    "serviceability": "SERVICEABLE",
+    "slaString": "25-30 mins",
+    "lastMileTravelString": "2.7 km",
+    "iconType": "ICON_TYPE_EMPTY"
+  },
+  "availability": {
+    "nextCloseTime": "2024-02-12 23:00:00",
+    "opened": true
+  },
+  "badges": {},
+  "isOpen": true,
+  "type": "F",
+  "badgesV2": {
+    "entityBadges": {
+      "imageBased": {},
+      "textBased": {},
+      "textExtendedBadges": {}
+    }
+  },
+  "aggregatedDiscountInfoV3": {
+    "header": "₹125 OFF",
+    "subHeader": "ABOVE ₹199",
+    "discountTag": "FLAT DEAL",
+    "discountCalloutInfo": {
+      "message": "Free Delivery",
+      "logoCtx": {
+        "logo": "v1655895371/free_delivery_logo_hqipbo.png"
+      }
+    }
+  },
+  "orderabilityCommunication": {
+    "title": {},
+    "subTitle": {},
+    "message": {},
+    "customIcon": {}
+  },
+  "differentiatedUi": {
+    "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+    "differentiatedUiMediaDetails": {
+      "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+      "lottie": {},
+      "video": {}
+    }
+  },
+  "reviewsSummary": {},
+  "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+  "restaurantOfferPresentationInfo": {}
+}

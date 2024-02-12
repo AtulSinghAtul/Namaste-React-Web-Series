@@ -351,3 +351,169 @@ test("Should load 2 input boxes on the Contact us component", () => {
 
 })
 ```
+
+- jest sayes in the place of test function you write alsp it function, then what is the difference between them?
+
+- Nothing is differnce both are same, it is just another name for test.
+
+```
+it()
+```
+
+## Now we will test our header component.
+
+- We will test inside cart have any value or not
+- when we write render mathod for header and run the test it gives us error because render goes to inside header component and read line by line code and when he got useSelector they don't no what is useSelector because useSelector is react redux code not jsx or react, so we will provide , provider store to header inside rendor method.
+
+```
+it("Should load header component with alogin button", ()=>{
+  render(
+    <Provider store={appStore}>
+      <Header/>
+    </Provider>
+)
+})
+```
+
+- Then it will also give error because we use routing in header component, the link will give error becuse it's import react router dom so we also provide BrowserRouter to our header component
+
+```
+it("Should load header component with alogin button", ()=>{
+  render(
+    <BrowserRouter>
+      <Header/>
+    </BrowserRouter>
+)
+})
+```
+
+- If we have multiple button and we want to find login button
+
+```
+// Query
+const ligInButton = screen.getByRole("button),{name:"Login"}
+```
+
+- How can we find Cart?
+
+```
+// Query
+const cart = screen.getByText("Cart - (0 Item))
+```
+
+- How can we use Rejex?
+
+```
+// Query
+const cart = screen.getByText(/Cart/)
+```
+
+- How can we write test our click events? - basically we have `fireEvents` to testing click event.
+
+```
+// query
+const logInButton = screen.getByRrole("button"),{name:"Login"};
+
+fireEvent.click(logInButton);
+
+const logOutButton = screen.getByRrole("button"),{name:"Logout"};
+
+expect(logoutButton).toBeInTheDocument();
+```
+
+### How can we write test case for props?
+
+- how can we pass props to component and test it
+
+```
+import MOCK_DATA from "../mockData/resCardMockData.json";
+import ResturantCard from "../RestaurantCard";
+import { screen, render } from "@testing-library/react";
+import "@testing-library/jest-dom";
+
+it("Should render restaurentCard component with props Data", () => {
+  render(<ResturantCard resData={MOCK_DATA} />);
+
+  //Query
+  const name = screen.getByText("Chicago Pizza");
+
+  //Assertion
+  expect(name).toBeInTheDocument();
+});
+```
+
+# Integration Testing?
+
+- When we testing the body component, when we write rendering this body component but it's not rendring it on the browser it is rendering jest dom which is like as browser and the fetch() function given by browser it not given by js and overhere in testing this is render by jest dom browser like things so it cant not understand fetch, jest dose not understand fetch, so what will have do?
+- We will have to write mock function for this fetch just we have like mock data we can write mock function for fetch.
+
+```
+global.fetch = jest.fn()
+```
+
+this will give us mock fetch function. fn() will takes a callback function and here we will mock exactelly like how our fetch function work.
+
+- How dose my fetch function works?
+- so what dose our fetch function returnes? it's return us promise, so also I will have return Promise for this because we want to make it exactely similer to identical fetch function we are trying to mock fetch function exactely similar to how our fetch function works.
+
+```
+global.fetch = jest.fn(()=>{
+  return Promise.resolve({
+    json: ()=>{
+      return Promise.resolve(MOCK_DATA);
+    }
+  })
+})
+```
+
+- **Note:-** In package.json write script `"watch-test": "jest --watch"` this script will continue running our test cases if we changing in our file as like a parcel.
+  commond: `npm run watch-test`
+
+- when run this test this gives us warning-
+
+  > Warning: An update to Body inside a test was not wrapped in act(...).
+
+  > When testing, code that causes React state updates should be wrapped into act(...):
+
+```
+        act(() => {
+          /* fire events that update state */
+        });
+        /* assert on the output */
+```
+
+- and this act function comes from `react-dom/test-utiles`
+
+- now how use this function, first we await this function, this act function return us promise and when we await this we make callback fumction async and this act function takes again async callback function
+
+```
+globalThis.fetch = jest.fn(() => {
+  return Promise.resolve({
+    json: () => {
+      return Promise.resolve(MOCK_DATA);
+    },
+  });
+});
+
+it("Should render the body Component with Search",async () => {
+ await act(async ()=> render(<Body />);)
+});
+```
+
+- and it's gives us again error for Link, so we wrap our browserRouter again.
+
+```
+it("Should render the body Component with Search", async () => {
+  await act(async () =>
+    render(
+      <BrowserRouter>
+        <Body />
+      </BrowserRouter>
+    )
+  );
+  // Query
+  const searchBtn = screen.getByRole("button", { name: "search restaurants" });
+  // Assertion
+  expect(searchBtn).toBeInTheDocument();
+});
+```
