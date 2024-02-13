@@ -4,18 +4,19 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 
 const AccordionItemsList = ({ items }) => {
-  console.log(items);
+  // console.log(items);
   const dispatch = useDispatch(addItem("Lassi"));
 
   function handleAddItem(item) {
     dispatch(addItem(item));
-    console.log(item);
+    // console.log(item);
   }
 
   return (
     <div>
       {items?.map((item) => (
         <div
+          data-testid="foodItems"
           key={item?.card?.info?.id}
           className="flex justify-between gap-6 mb-3 pb-4 border-b-2 border-gray-300 w-[100%]"
         >

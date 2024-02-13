@@ -15,7 +15,7 @@ const Body = () => {
   const { userLoggedIn, setUserName } = useContext(UserContext);
 
   //* Whenever state variable update, react triggers a reconciliation cycle(re-render the component)
-  console.log("Body Rendered");
+  // console.log("Body Rendered");
 
   useEffect(() => {
     fetchData();
@@ -76,6 +76,7 @@ const Body = () => {
       <div className="search flex justify-evenly items-center gap-12 h-8 bg-green-50 p-12">
         <div className="flex justify-center items-center gap-6">
           <input
+            data-testid="searchInput"
             type="text"
             value={searchText}
             onChange={(e) => {
@@ -140,7 +141,7 @@ const Body = () => {
             ) : (
               <ResturantCard resData={restaurant?.info} />
             )}
-            {console.log(restaurant?.info.aggregatedDiscountInfoV3?.header)}
+            {/* {console.log(restaurant?.info.aggregatedDiscountInfoV3?.header)} */}
           </Link>
         ))}
       </div>

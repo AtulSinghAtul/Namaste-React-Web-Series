@@ -28,7 +28,7 @@ const Header = () => {
 
   //! Third use case of dependency array
   useEffect(() => {
-    console.log("use Effect render after header component render");
+    // console.log("use Effect render after header component render");
   }, [loginlogoutBtn]);
 
   //! checking online or offline status
@@ -87,7 +87,7 @@ const Header = () => {
           loginlogoutBtn === "Login"
             ? setLoginlogoutBtn("Logout")
             : setLoginlogoutBtn("Login");
-          console.log(loginlogoutBtn);
+          // console.log(loginlogoutBtn);
         }}
         className="bg-green-600 hover:bg-green-500 text-green-200 hover:text-green-100 mr-8 px-4  py-2 rounded-md"
       >

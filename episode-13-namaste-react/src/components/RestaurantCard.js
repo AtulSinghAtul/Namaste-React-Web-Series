@@ -26,7 +26,10 @@ const ResturantCard = (props) => {
     resData;
 
   return (
-    <div className="res-card flex flex-col gap-2  items-start w-[250px] h-fit bg-slate-100 p-5 m-5 rounded-md">
+    <div
+      data-testid="resCard"
+      className="res-card flex flex-col gap-2  items-start w-[250px] h-fit bg-slate-100 p-5 m-5 rounded-md"
+    >
       <img
         className="rounded-md"
         src={CDN_URL + cloudinaryImageId}
@@ -49,7 +52,7 @@ export default ResturantCard;
 export const withDiscountLabel = (ResturantCard) => {
   return (props) => {
     const { resData } = props;
-    console.log(props);
+    // console.log(props);
     return (
       <>
         <div className="relative">

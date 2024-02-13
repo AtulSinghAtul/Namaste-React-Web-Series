@@ -11,7 +11,7 @@ const Cart = () => {
   /*const store = useSelector((store) => store);
   const cartItems = store.cart.items*/
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   const dispatch = useDispatch();
 

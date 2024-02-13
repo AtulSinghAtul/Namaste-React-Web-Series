@@ -517,3 +517,148 @@ it("Should render the body Component with Search", async () => {
   expect(searchBtn).toBeInTheDocument();
 });
 ```
+
+- **We will test our input box when type in input box our onChange will triggred**, so how will test our input.
+
+- First of we will get our serch input box, we have not any place holder otherwise we screen placeholder test so suppose if we not have any thing in input so this jest gives us something known as **getByTestId**.
+
+- Suppose if my getByRole, getByTest not working but **getByTestId** will alwayes work so go back our actual input tag now we give test id to input box using **data-testid** and jest will read it and give it's value searchInput (**data-testid = "searchInput"**) now can find by testid in your test file. S this is another way to find you something inside your screen this jest-dom.
+- and now we fire event for change.
+  **fireEvent.change(searchInput, {})** and this object we got value what inside our onChange(e) parameter e, and this parameter**e.target.value is given us by browser** and in our test file we have not browser so we write inside object **{target: {value: "burger"}}** this value burger will match from our input box where we write burger.
+- Now we click the search button this again click fire event we write in test file.
+
+```
+it("Should render the body Component with Search", async () => {
+  await act(async () =>
+    render(
+      <BrowserRouter>
+        <Body />
+      </BrowserRouter>
+    )
+  );
+  // Query
+  const cardsBeforeSearchInput = screen.getAllByTestId("resCard");
+  // Assertion
+  expect(cardsBeforeSearchInput.length).toBe(20);
+
+  const searchBtn = screen.getByRole("button", { name: "search restaurants" });
+
+  const searchInput = screen.getByTestId("searchInput");
+
+  // fire event for onChange()
+  fireEvent.change(searchInput, { target: { value: "burger" } });
+
+  fireEvent.click(searchBtn);
+
+  // screen should load 4 res cards
+  const cardsAfterSearch = screen.getAllByTestId("resCard");
+
+  // Assertion
+  expect(cardsAfterSearch.length).toBe(4);
+});
+```
+
+### testing for top rated card
+
+```
+
+it("Should filter top rated Restaurents", async () => {
+  await act(async () =>
+    render(
+      <BrowserRouter>
+        <Body />
+      </BrowserRouter>
+    )
+  );
+  // Query
+  const cardsBeforeFilter = screen.getAllByTestId("resCard");
+  // Assertion
+  expect(cardsBeforeFilter.length).toBe(9);
+
+  const topRatedBtn = screen.getByRole("button", {
+    name: "top rated restaurent",
+  });
+  fireEvent.click(topRatedBtn);
+
+  const cardsAfterFilter = screen.getAllByTestId("resCard");
+  expect(cardsAfterFilter.length).toBe(3);
+});
+
+```
+
+## Helper function?
+
+```
+describe("", () => {
+  beforeAll(() => {
+    console.log("Before All test cases");
+  });
+
+  afterAll(() => {
+    console.log("After All test cases");
+  });
+
+  beforeEach(() => {
+    console.log("Beafore each test cases");
+  });
+
+  afterEach(() => {
+    console.log("After each test cases");
+  });
+
+  it("Should render the body Component with Search", async () => {
+    await act(async () =>
+      render(
+        <BrowserRouter>
+          <Body />
+        </BrowserRouter>
+      )
+    );
+    // Query
+    const cardsBeforeSearchInput = screen.getAllByTestId("resCard");
+    // Assertion
+    expect(cardsBeforeSearchInput.length).toBe(9);
+
+    const searchBtn = screen.getByRole("button", {
+      name: "search restaurants",
+    });
+
+    const searchInput = screen.getByTestId("searchInput");
+
+    // fire event for onChange()
+    fireEvent.change(searchInput, { target: { value: "burger" } });
+
+    fireEvent.click(searchBtn);
+
+    // screen should load 4 res cards
+    const cardsAfterSearch = screen.getAllByTestId("resCard");
+
+    // Assertion
+    expect(cardsAfterSearch.length).toBe(1);
+  });
+
+  it("Should filter top rated Restaurents", async () => {
+    await act(async () =>
+      render(
+        <BrowserRouter>
+          <Body />
+        </BrowserRouter>
+      )
+    );
+    // Query
+    const cardsBeforeFilter = screen.getAllByTestId("resCard");
+    // Assertion
+    expect(cardsBeforeFilter.length).toBe(9);
+
+    const topRatedBtn = screen.getByRole("button", {
+      name: "top rated restaurent",
+    });
+    fireEvent.click(topRatedBtn);
+
+    const cardsAfterFilter = screen.getAllByTestId("resCard");
+    expect(cardsAfterFilter.length).toBe(3);
+  });
+});
+```
+
+# Integration testing for add cart and cart page

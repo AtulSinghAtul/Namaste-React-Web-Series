@@ -11,9 +11,9 @@ const RestaurantsMenu = () => {
   //! This Custom Hook only fetch the data from API
   const resInfo = useRestaurantMenu(resId);
 
-  console.log(resInfo);
+  // console.log(resInfo);
 
-  console.log(resId);
+  // console.log(resId);
 
   if (resInfo == null) {
     return <Shimmer />;
@@ -30,7 +30,7 @@ const RestaurantsMenu = () => {
         );
       }
     );
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <>
